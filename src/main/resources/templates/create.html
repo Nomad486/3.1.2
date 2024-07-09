@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <style>
+        .error-message {
+            color: #dc3545;
+            font-style: italic;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center mt-5">
+    <h2>Create New User</h2>
+    <form th:method="POST" th:action="@{/create}" th:object="${user}" class="needs-validation" novalidate>
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name" class="form-control"/>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></div>
+        <br/>
+        <label for="age">Enter age: </label>
+        <input type="number" th:field="*{age}" id="age" class="form-control"/>
+        <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error-message"></div>
+        <br/>
+        <label for="surname">Enter surname: </label>
+        <input type="text" th:field="*{surname}" id="surname" class="form-control"/>
+        <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" class="error-message"></div>
+        <br/>
+        <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
+</div>
+</body>
+</html>
