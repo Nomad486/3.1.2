@@ -16,12 +16,11 @@ public class UserController {
 
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String index(ModelMap model,
                         @ModelAttribute("user") User user) {
         model.addAttribute("users", userService.readAllUsers());

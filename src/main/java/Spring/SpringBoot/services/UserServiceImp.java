@@ -10,17 +10,16 @@ import java.util.List;
 
 
 @Service
-@Transactional
+@Transactional (readOnly = true)
 public class UserServiceImp implements UserService {
 
     private final UserDao userDao;
 
-    @Autowired
     public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
 
-    @Transactional
+    @Transactional (readOnly = false)
     @Override
     public void createUser(User user) {
         userDao.createUser(user);
@@ -36,13 +35,13 @@ public class UserServiceImp implements UserService {
         return userDao.readAllUsers();
     }
 
-    @Transactional
+    @Transactional (readOnly = false)
     @Override
     public void updateUser(int id, User user) {
         userDao.updateUser(id, user);
     }
 
-    @Transactional
+    @Transactional (readOnly = false)
     @Override
     public void deleteUser(int id) {
         userDao.deleteUser(id);
